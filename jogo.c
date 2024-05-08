@@ -3,9 +3,8 @@
 #include <conio.h>
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
-int w, jan = 0;
-int i, j, x, y,x2,y2;
-char input;
+int w, jan = 0, i, j, x, y,x2,y2;
+char input, map[50][50],submap[50][50];
 /*		
 	i e j = linha e coluna
 	jan = janela
@@ -13,65 +12,162 @@ char input;
 	submap = mapa auxiliar(contera apenas as informacoes do mapa original)
 */
 
-int main(int argc, char *argv[]) {
-	system("color 04");
+
+void gameover(){
+	system("cls");
+	printf("                      _____              __  __   ______      ____   __      __  ______   _____  \n");
+	printf("                     / ____|     /\\     |  \\/  | |  ____|    / __ \\  \\ \\    / / |  ____| |  __ \\ \n");
+	printf("                    | |  __     /  \\    | \\  / | | |__      | |  | |  \\ \\  / /  | |__    | |__) |\n");
+	printf("                    | | |_ |   / /\\ \\   | |\\/| | |  __|     | |  | |   \\ \\/ /   |  __|   |  _  / \n");
+	printf("                    | |__| |  / ____ \\  | |  | | | |____    | |__| |    \\  /    | |____  | | \\ \\ \n");
+	printf("                     \\_____| /_/    \\_\\ |_|  |_| |______|    \\____/      \\/     |______| |_|  \\_\\\n");
+	printf("                                                                                                  \n");
+	printf("                                                                                                  \n");
+  	printf(" \t\t\t\t\t\t    Ta bebado, pai?\n\n\n\t\t\t\t   --PRESSIONE QUALQUER TECLA PARA VOLTAR AO MENU--\n");
+  	getch();
+	w = 0;
+	jan = 0;
+	system("cls");
 	mainmenu();
-	//gameover();
-	//fase1();
-	//fase2();
 }
 
+void fase2(){
+	//char map[25][25],submap[25][25];
 
-//Tela inicial
-void mainmenu(){
-	w=0;
-
-    do {
-    	system("cls");
-  	    printf("          ______   _    _        _                _____                            _____     _____    ____  \n");
-    	printf("         |  ____| | |  | |      | |     /\\       |  __ \\      /\\           /\\     |  __ \\   / ____|  / __ \\ \n");
-    	printf("         | |__    | |  | |      | |    /  \\      | |  | |    /  \\         /  \\    | |__) | | |  __  | |  | |\n");
-    	printf("         |  __|   | |  | |  _   | |   / /\\ \\     | |  | |   / /\\ \\       / /\\ \\   |  _  /  | | |_ | | |  | |\n");
-    	printf("         | |      | |__| | | |__| |  / ____ \\    | |__| |  / ____ \\     / ____ \\  | | \\ \\  | |__| | | |__| |\n");
-    	printf("         |_|       \\____/   \\____/  /_/    \\_\\   |_____/  /_/    \\_\\   /_/    \\_\\ |_|  \\_\\  \\_____|  \\____/ \n");
-    	printf("                                                                                                             \n");
-    	printf("                                                                                                             \n");
-        printf("\n\n\t\t\t\t\t\t\tA) JOGAR\n\n\t\t\t\t\t\t\tB) TUTORIAL\n\n\t\t\t\t\t\t\tC) SAIR\n");
-        input = getche();
-        system("cls");
-
-        if (input == 'a' || input == 'A') {
-        	system("cls");
-        	fase1();
-        }
-		
-	else if (input == 'b' || input == 'B') {
-	 w = 1;
-	 while (w == 1) {
-	 	printf("\n\n\n\tW: O jogador movimenta uma unidade para cima.\n\tA: O jogador movimenta uma unidade para esquerda.\n\tS: O jogador movimenta uma unidade para baixo.\n\tD: O jogador movimenta uma unidade para direita.\n\tI: O jogador interage com o objeto que esta em cima.\n");
-        printf("\n\t'@' eh a chave.\n\t'D' eh a porta fechada.\n\t'=' eh a porta aberta.\n\t'O': Simbolo que representa um botao que o usuario pode interagir, o botao fica no chao\n\t e o jogador deve ficar em cima dele para poder interagir.");
-        printf("\n\t'#' eh um espinho que se vc tocar a fase reinicia.\n\t'>'eh um portal.\n\t'X' eh um monstro que possui um comportamento contrario ao do jogador.\n\t'V'eh um montro que te segue.\n\n");
-        printf("\t--Pressione qualquer tecla para voltar para o Menu--\n\n\t");
-        getch();
-        w = 0;
-        system("cls");
+	x=5;
+	y=5;
+	x2=15;
+	y2=15;
+	
+		for(i = 0; i <= 19; i++){
+		for(j = 0;j<=19; j++){
+			map[i][j] = '*';
 		}
-    }else if (input == 'c' || input == 'C') {
-        	system("cls");
-            w = 3;
-            if(w == 3){
-            	saida();
-			}    
-        } else {
-        	system("cls");
-            printf("Comando invalido. Digite conforme as opcoes oferecidas.\n");
-            getch();
-        }
-    } while (w == 0);
+	}
+	
+	for(i = 1; i <= 18; i++){
+		for(j = 1;j<=18; j++){
+			map[i][j] = ' ';
+		}
+	}
+	
+	map [x] [y] = '&';
+	map [x2] [y2] = 'X';
+	
+
+	
+	
+	
+	
+	while(jan != 0){
+		
+	printf("\n\n\n\n\n\n");
+	for(i = 0; i <=19; i++){
+		printf("\t\t\t\t\t  ");
+		for(j = 0;j<=19; j++){
+			printf("%c ", map [i] [j]);
+		}
+		printf("\n");
+		
+	}
+	
+	input = getche();
+	system("cls");
+	if(input == 'w'){
+		
+		if(map[x-1][y] != '*' && map[x -1][y] != 'D'){
+			map[x][y] = ' ';
+			map[x-1][y] = '&';
+			x = x -1;
+			
+			if(map[x2+1][y2] != '*'){
+				if(map[x2][y2] == '&'){
+					map[x2+1][y2] = 'X';
+			x2 = x2 +1;
+	 				
+				 }
+			 else{
+			map[x2][y2]= ' ';
+			map[x2+1][y2] = 'X';
+			x2 = x2 +1;
+	 		
+	 	}
+			}
+		}
+
+	}
+	if(input == 'a'){
+		
+		if(map[x][y-1] != '*' && map[x][y-1] != 'D'){
+			map[x][y] = ' ';
+			map[x][y-1] = '&';
+	 		y = y - 1;
+	 		
+	 		if(map[x2][y2+1] != '*'){
+	 			if(map[x2][y2] == '&'){
+	 				map[x2][y2+1] = 'X';
+	 				y2 = y2 + 1;
+	 				
+				 }
+			 else{
+			 	map[x2][y2] = ' ';
+	 		map[x2][y2+1] = 'X';
+	 		y2 = y2 + 1;
+	 		
+	 		}
+	 	 	}
+		}
+	}
+	if(input == 's'){
+		if(map[x+1][y] != '*' && map[x+1][y] != 'D'){
+			map[x][y] = ' ';
+			map[x+1][y] = '&';
+			x = x+1;
+			
+			if(map[x2 -1][y2] != '*'){
+				if(map[x2][y2] == '&'){
+					map[x2 -1][y2] = 'X';
+					x2 = x2 -1;		
+				 }
+			else{
+			 	map[x2][y2] = ' ';
+			map[x2 -1][y2] = 'X';
+			x2 = x2 -1;
+	 		
+	 		}
+			}
+		}
+	}
+	if(input == 'd'){
+		if(map[x][y+1] != '*' && map[x][y+1] != 'D'){
+		
+			map[x][y] = ' ';
+			map[x][y+1] = '&';
+	 		y = y + 1;
+	 		
+	 		if(map[x2][y2-1] != '*'){
+	 			if(map[x2][y2] == '&'){
+	 				map[x2][y2-1] = 'X';
+	 				y2 = y2 - 1;
+				 }
+			 else{
+	 		map[x2][y2] = ' ';
+	 		map[x2][y2-1] = 'X';
+	 		y2 = y2 - 1;
+	 	}
+	 	}
+		}
+
+	}
+
+	if(map[x] [y] == map[x2] [y2]){
+		gameover();
+	}		
+}
 }
 
 void fase1(){
-	char map[25][25],submap[25][25];
+	//char map[25][25],submap[25][25];
 
 	jan = 1;
 	x =1;
@@ -217,180 +313,67 @@ void fase1(){
 }
 
 	
-void fase2(){
-	char map[25][25],submap[25][25];
-
-	x=5;
-	y=5;
-	x2=15;
-	y2=15;
-	
-		for(i = 0; i <= 19; i++){
-		for(j = 0;j<=19; j++){
-			map[i][j] = '*';
-		}
-	}
-	
-	for(i = 1; i <= 18; i++){
-		for(j = 1;j<=18; j++){
-			map[i][j] = ' ';
-		}
-	}
-	
-	map [x] [y] = '&';
-	map [x2] [y2] = 'X';
-	
-
-	
-	
-	
-	
-	while(jan != 0){
-		
-	printf("\n\n\n\n\n\n");
-	for(i = 0; i <=19; i++){
-		printf("\t\t\t\t\t  ");
-		for(j = 0;j<=19; j++){
-			printf("%c ", map [i] [j]);
-		}
-		printf("\n");
-		
-	}
-	
-	input = getche();
-	system("cls");
-	if(input == 'w'){
-		
-		if(map[x-1][y] != '*' && map[x -1][y] != 'D'){
-			
-			
-			map[x][y] = ' ';
-			map[x -1][y] = '&';
-			x = x -1;
-			
-			if(map[x2 +1][y2] != '*'){
-				if(map[x2][y2] == '&'){
-					map[x2 +1][y2] = 'X';
-			x2 = x2 +1;
-	 				
-				 }
-			 else{
-			map[x2][y2]= ' ';
-			map[x2 +1][y2] = 'X';
-			x2 = x2 +1;
-	 		
-	 	}
-			
-			
-		
-			}
-		}
-
-	}
-	if(input == 'a'){
-		
-		if(map[x][y-1] != '*' && map[x][y-1] != 'D'){
-			
-		
-			map[x][y] = ' ';
-			map[x][y-1] = '&';
-	 		y = y - 1;
-	 		
-	 		if(map[x2][y2+1] != '*'){
-	 			if(map[x2][y2] == '&'){
-	 				map[x2][y2+1] = 'X';
-	 				y2 = y2 + 1;
-	 				
-				 }
-			 else{
-			 	map[x2][y2] = ' ';
-	 		map[x2][y2+1] = 'X';
-	 		y2 = y2 + 1;
-	 		
-	 	}
-			 
-	 	
-	 	 }
-		}
 
 
-	}
-	if(input == 's'){
-		if(map[x+1][y] != '*' && map[x+1][y] != 'D'){
-		
-			map[x][y] = ' ';
-			map[x+1][y] = '&';
-			x = x+1;
-			
-			if(map[x2 -1][y2] != '*'){
-				if(map[x2][y2] == '&'){
-					map[x2 -1][y2] = 'X';
-					x2 = x2 -1;
-	 				
-				 }
-			 else{
-			 	map[x2][y2] = ' ';
-			map[x2 -1][y2] = 'X';
-			x2 = x2 -1;
-	 		
-	 	}
-			
-		
-		}
-		}
-	}
-	if(input == 'd'){
-		if(map[x][y+1] != '*' && map[x][y+1] != 'D'){
-		
-			map[x][y] = ' ';
-			map[x][y+1] = '&';
-	 		y = y + 1;
-	 		
-	 		if(map[x2][y2-1] != '*'){
-	 			if(map[x2][y2] == '&'){
-	 				map[x2][y2-1] = 'X';
-	 				y2 = y2 - 1;
-				 }
-			 else{
-	 		map[x2][y2] = ' ';
-	 		map[x2][y2-1] = 'X';
-	 		y2 = y2 - 1;
-	 	}
-	 	}
-		}
 
-	}
 
-	if(map[x] [y] == map[x2] [y2]){
-		gameover();
-	}
-
-		
-		
-}
-	
-	
-}
-
-void gameover(){
-	system("cls");
-	printf("                      _____              __  __   ______      ____   __      __  ______   _____  \n");
-	printf("                     / ____|     /\\     |  \\/  | |  ____|    / __ \\  \\ \\    / / |  ____| |  __ \\ \n");
-	printf("                    | |  __     /  \\    | \\  / | | |__      | |  | |  \\ \\  / /  | |__    | |__) |\n");
-	printf("                    | | |_ |   / /\\ \\   | |\\/| | |  __|     | |  | |   \\ \\/ /   |  __|   |  _  / \n");
-	printf("                    | |__| |  / ____ \\  | |  | | | |____    | |__| |    \\  /    | |____  | | \\ \\ \n");
-	printf("                     \\_____| /_/    \\_\\ |_|  |_| |______|    \\____/      \\/     |______| |_|  \\_\\\n");
-	printf("                                                                                                  \n");
-	printf("                                                                                                  \n");
-  	printf(" \t\t\t\t\t\t    Ta bebado, pai?\n\n\n\t\t\t\t   --PRESSIONE QUALQUER TECLA PARA VOLTAR AO MENU--\n");
-  	getch();
-	w = 0;
-	jan = 0;
-	system("cls");
-	mainmenu();
-}
-
-void saida(){
+int saida(){
 	printf("Obrigado por jogar!!!");
 	return 0;
+}
+
+//Tela inicial
+int mainmenu(){
+	w=0;
+
+    do {
+    	system("cls");
+  	    printf("          ______   _    _        _                _____                            _____     _____    ____  \n");
+    	printf("         |  ____| | |  | |      | |     /\\       |  __ \\      /\\           /\\     |  __ \\   / ____|  / __ \\ \n");
+    	printf("         | |__    | |  | |      | |    /  \\      | |  | |    /  \\         /  \\    | |__) | | |  __  | |  | |\n");
+    	printf("         |  __|   | |  | |  _   | |   / /\\ \\     | |  | |   / /\\ \\       / /\\ \\   |  _  /  | | |_ | | |  | |\n");
+    	printf("         | |      | |__| | | |__| |  / ____ \\    | |__| |  / ____ \\     / ____ \\  | | \\ \\  | |__| | | |__| |\n");
+    	printf("         |_|       \\____/   \\____/  /_/    \\_\\   |_____/  /_/    \\_\\   /_/    \\_\\ |_|  \\_\\  \\_____|  \\____/ \n");
+    	printf("                                                                                                             \n");
+    	printf("                                                                                                             \n");
+        printf("\n\n\t\t\t\t\t\t\tA) JOGAR\n\n\t\t\t\t\t\t\tB) TUTORIAL\n\n\t\t\t\t\t\t\tC) SAIR\n");
+        input = getche();
+        system("cls");
+
+        if (input == 'a' || input == 'A') {
+        	system("cls");
+        	fase1();
+        }
+		
+	else if (input == 'b' || input == 'B') {
+	 w = 1;
+	 while (w == 1) {
+	 	printf("\n\n\n\tW: O jogador movimenta uma unidade para cima.\n\tA: O jogador movimenta uma unidade para esquerda.\n\tS: O jogador movimenta uma unidade para baixo.\n\tD: O jogador movimenta uma unidade para direita.\n\tI: O jogador interage com o objeto que esta em cima.\n");
+        printf("\n\t'@' eh a chave.\n\t'D' eh a porta fechada.\n\t'=' eh a porta aberta.\n\t'O': Simbolo que representa um botao que o usuario pode interagir, o botao fica no chao\n\t e o jogador deve ficar em cima dele para poder interagir.");
+        printf("\n\t'#' eh um espinho que se vc tocar a fase reinicia.\n\t'>'eh um portal.\n\t'X' eh um monstro que possui um comportamento contrario ao do jogador.\n\t'V'eh um montro que te segue.\n\n");
+        printf("\t--Pressione qualquer tecla para voltar para o Menu--\n\n\t");
+        getch();
+        w = 0;
+        system("cls");
+		}
+    }else if (input == 'c' || input == 'C') {
+        	system("cls");
+            w = 3;
+            if(w == 3){
+            	saida();
+			}    
+        } else {
+        	system("cls");
+            printf("Comando invalido. Digite conforme as opcoes oferecidas.\n");
+            getch();
+        }
+    } while (w == 0);
+}
+
+int main(int argc, char *argv[]) {
+	system("color 04");
+	mainmenu();
+	//gameover();
+	//fase1();
+	//fase2();
 }
