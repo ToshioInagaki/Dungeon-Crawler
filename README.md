@@ -14,17 +14,17 @@ COMO JOGAR:
 - I : O jogador interage com o objeto que esta em cima.
 
 OBJETOS:
-- @ : Chave.
-- D : Porta fechada.
-- = : Porta aberta.
-- o : Botão que o player pode interagir.
-- 0 : Portal.
+- "@" : Chave.
+- "D" : Porta fechada.
+- "=" : Porta aberta.
+- "o" : Botão que o player pode interagir.
+- "0" : Portal.
   
 OBSTACULOS E MONSTROS:
-- # : Espinho que mata o player ao encostrar nele, reiniciando a fase.
-- X : Monstro que se move aleatoriamente pelo mapa.
-- e : Monstro que possui um comportamento contrário ao do jogador.
-- V : Monstro que te segue.
+- "#" : Espinho que mata o player ao encostrar nele, reiniciando a fase.
+- "X" : Monstro que se move aleatoriamente pelo mapa.
+- "e" : Monstro que possui um comportamento contrário ao do jogador.
+- "V" : Monstro que te segue.
 
 CRIADORES: 
 Gabriel Coelho Góes, Gabriel Costa de Miranda e Henrique Toshio Okajima Inagaki.
